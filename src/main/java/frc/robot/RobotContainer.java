@@ -4,11 +4,11 @@
 
 package frc.robot;
 
-import com.ctre.phoenix6.hardware.TalonFX;
+import static edu.wpi.first.units.Units.*;
 
 import edu.wpi.first.wpilibj2.command.*;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj2.command.button.*;
+import frc.robot.subsystems.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -18,14 +18,18 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
     // The robot's subsystems and commands are defined here...
-    TalonFX motor;
+    Motor motor;
 
     // Replace with CommandPS4Controller or CommandJoystick if needed
     private final CommandXboxController controller = new CommandXboxController(Constants.CONTROLLER_PORT);
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
-        motor = new TalonFX(Constants.MOTOR_ID);
+        motor = new Motor(
+            new MotorIOKraken(Constants.KRAKEN_ID)
+            // new MotorIONEO(Constants.NEO_ID)
+        );
+        
         // Configure the trigger bindings
         configureBindings();
     }
@@ -40,7 +44,8 @@ public class RobotContainer {
      * joysticks}.
      */
     private void configureBindings() {
-        controller.b().onTrue(new InstantCommand(() -> motor.setVoltage(2)));
+        controller.b().onTrue(new InstantCommand(() -> motor.setVoltage(Volts.of(2))));
+        controller.a().onTrue(new InstantCommand(() -> motor.setPosition(Rotations.of(0.5))));
     }
 
     /**

@@ -17,5 +17,6 @@ public final class Constants {
 
     public static final int RIO_ID = 0;
     public static final int PDH_ID = 1;
-    public static final int MOTOR_ID = 2;
+    public static final int KRAKEN_ID = 2;
+    public static final int NEO_ID = 3;
 }
