@@ -14,6 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     public static final int CONTROLLER_PORT = 0;
+    public static final int SWITCH_PORT_1 = 0;
 
     public static final int RIO_ID = 0;
     public static final int PDH_ID = 1;

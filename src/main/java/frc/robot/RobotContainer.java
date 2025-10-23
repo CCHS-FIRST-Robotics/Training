@@ -6,6 +6,7 @@ package frc.robot;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -22,6 +23,7 @@ public class RobotContainer {
 
     // Replace with CommandPS4Controller or CommandJoystick if needed
     private final CommandXboxController controller = new CommandXboxController(Constants.CONTROLLER_PORT);
+    private final Trigger switch1 = new Trigger(new DigitalInput(Constants.SWITCH_PORT_1)::get);
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
@@ -41,6 +43,7 @@ public class RobotContainer {
      */
     private void configureBindings() {
         controller.b().onTrue(new InstantCommand(() -> motor.setVoltage(2)));
+        switch1.onTrue(new InstantCommand(() -> motor.setVoltage(0)));
     }
 
     /**

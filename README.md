@@ -8,12 +8,13 @@
  - SparkMAX
  - CANCoder
  - CANAndMag
-## CAN bus
+## CAN
  - Setting CAN IDs
 ## VendorDeps
  - How to import them
 ## Intro to Main, Robot, and Robotcontainer
  - InstantCommands
+ - Controllers and Switches
 ## Using Driverstation, AdvantageScope, and Phoenix Tuner X
  - Deploying Code
  - Graphing with AdvantageScope
